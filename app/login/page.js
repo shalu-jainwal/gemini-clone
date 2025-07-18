@@ -35,11 +35,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-950 text-white">
+    <div className="min-h-screen flex flex-col md:flex-row" style={{ backgroundColor: "var(--bg-color)", color: "var(--text-color)" }}>
   
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
-        <div className="bg-gray-900/80 backdrop-blur-md p-10 rounded-xl shadow-2xl w-full max-w-md">
-          <h2 className="text-3xl font-bold text-center mb-8 text-white">
+       <div className="chat-container backdrop-blur-md p-10 rounded-xl shadow-xl w-full max-w-md border border-[var(--input-border)] bg-[var(--card-bg)]">
+        <h2 className="text-3xl font-bold text-center mb-8" style={{ color: "var(--text-color)" }}>
             🚀 Gemini Chat Login
           </h2>
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
               />
               <input
                 {...register("phone", { required: true, minLength: 6 })}
-                className="w-full border border-gray-600 bg-transparent text-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+               className="w-full border border-gray-600 bg-white text-black placeholder-gray-500 placeholder-opacity-100 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:placeholder-opacity-100 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                 placeholder="📱 Enter phone number"
               />
               <button
@@ -67,7 +67,7 @@ export default function LoginPage() {
               <input
                 value={otpInput}
                 onChange={(e) => setOtpInput(e.target.value)}
-                className="w-full border border-gray-600 bg-transparent text-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full border border-gray-600 bg-white text-black placeholder-gray-500 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-500 transition"
                 placeholder="🔐 Enter OTP"
               />
               <button
@@ -89,7 +89,7 @@ export default function LoginPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-l from-gray-950/70 to-transparent" />
+       <div className="absolute inset-0 bg-gradient-to-l from-gray-100/70 to-transparent dark:from-gray-900/70" />
       </div>
     </div>
   );

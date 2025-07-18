@@ -60,8 +60,8 @@ export default function Dashboard() {
   }, [rawSearch, updateSearch]);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-6">
-      <div className="max-w-3xl mx-auto bg-gray-900/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-gray-700">
+    <div className="min-h-screen p-6" style={{ backgroundColor: "var(--bg-color)", color: "var(--text-color)" }}>
+      <div className="max-w-3xl mx-auto chat-container backdrop-blur-md p-8 rounded-2xl shadow-xl border border-[var(--input-border)]">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-4xl font-extrabold select-none">
             💬 Your Chatrooms
@@ -70,7 +70,7 @@ export default function Dashboard() {
         <input
           type="text"
           placeholder="🔍 Search chatrooms..."
-          className="w-full mb-6 p-3 border border-gray-700 bg-gray-800/50 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full mb-6 p-3 border border-[var(--input-border)] bg-[var(--input-bg)] text-[var(--text-color)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition"
           value={rawSearch}
           onChange={(e) => setRawSearch(e.target.value)}
         />
@@ -79,7 +79,7 @@ export default function Dashboard() {
           <input
             type="text"
             placeholder="🆕 New chatroom title"
-            className="flex-grow p-3 border border-gray-700 bg-gray-800/50 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            className="flex-grow p-3 border border-[var(--input-border)] bg-[var(--input-bg)] text-[var(--text-color)] rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -96,14 +96,14 @@ export default function Dashboard() {
           {loading
             ? [...Array(3)].map((_, i) => (
                 <div key={i} className="animate-pulse space-y-2">
-                  <div className="h-5 bg-gray-700 rounded w-1/2"></div>
-                  <div className="h-4 bg-gray-700 rounded w-full"></div>
+                  <div className="h-5 rounded w-1/2 bg-gray-300 dark:bg-gray-700"></div>
+                  <div className="h-4 rounded w-full bg-gray-300 dark:bg-gray-700"></div>
                 </div>
               ))
             : filteredChatrooms.map((room) => (
                 <li
                   key={room.id}
-                  className="flex justify-between items-center p-4 rounded-xl bg-gray-800/70 backdrop-blur-md border border-gray-700 shadow-lg transition hover:scale-105 hover:bg-gray-800 cursor-pointer"
+                  className="flex justify-between items-center p-4 rounded-xl bg-[var(--card-bg)] border border-[var(--input-border)] shadow-sm transition hover:scale-105 hover:bg-[var(--hover-bg)] cursor-pointer"
                 >
                   <Link
                     href={`/chatroom/${room.id}`}

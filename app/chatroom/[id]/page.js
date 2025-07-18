@@ -93,18 +93,20 @@ export default function ChatroomPage() {
 }, []);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-6 flex flex-col max-w-4xl mx-auto">
+    <div className="min-h-screen p-6 flex flex-col max-w-4xl mx-auto" style={{ backgroundColor: "var(--chat-bg)", color: "var(--text-color)" }}
+>
       <ChatHeader title={`💬 Chatroom: ${chatroomId}`} />
 
       <div
         ref={containerRef}
-        className="flex-1 bg-gray-900/80 backdrop-blur-md rounded-2xl p-6 shadow-2xl overflow-y-auto"
+        className="flex-1 chat-container backdrop-blur-md rounded-2xl p-6 shadow-2xl overflow-y-auto border border-gray-300/30 dark:border-gray-700"
+      style={{ backgroundColor: "var(--chat-bg)" }}
       >
         <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-3">
           {loading ? (
             <>
               {[...Array(3)].map((_, i) => (
-                <div key={i} className="animate-pulse space-y-2">
+                <div key={i} className="animate-pulse space-y-2" style={{ color: "transparent" }}>
                   <div className="h-6 bg-gray-700 rounded w-1/3"></div>
                   <div className="h-4 bg-gray-700 rounded w-full"></div>
                   <div className="h-4 bg-gray-700 rounded w-5/6"></div>

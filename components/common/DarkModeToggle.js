@@ -2,28 +2,42 @@
 
 import { useEffect, useState } from "react";
 
+function setTheme(theme) {
+  localStorage.setItem("theme", theme);
+  document.documentElement.className = theme;
+}
+
 export default function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setThemeState] = useState("theme-light");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("darkMode") === "true";
-    setDarkMode(stored);
-    document.documentElement.classList.toggle("dark", stored);
+    const storedTheme = localStorage.getItem("theme") || "theme-light";
+    setThemeState(storedTheme);
+    setMounted(true);
   }, []);
 
-  const toggle = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("darkMode", newMode);
-    document.documentElement.classList.toggle("dark", newMode);
+  useEffect(() => {
+    if (mounted) {
+      setTheme(theme);
+    }
+  }, [theme, mounted]);
+
+  const toggleTheme = () => {
+    setThemeState(theme === "theme-dark" ? "theme-light" : "theme-dark");
   };
+
+  if (!mounted) {
+    return null; 
+  }
 
   return (
     <button
-      onClick={toggle}
-      className="p-2 rounded bg-gray-700 text-white hover:bg-gray-600 transition"
+      onClick={toggleTheme}
+      className="p-2 rounded-md border border-gray-500"
+      aria-label="Toggle dark mode"
     >
-      {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+      {theme === "theme-dark" ? "🌞 Light Mode" : "🌙 Dark Mode"}
     </button>
   );
 }

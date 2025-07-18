@@ -25,30 +25,30 @@ export default function OTPForm({ onVerify }) {
   };
 
   return (
-    <>
+    <div className="card p-6 rounded-xl shadow-xl max-w-md mx-auto">
       {!otpSent ? (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <input
             {...register("phone", { required: true })}
             placeholder="Phone number"
-            className="border p-2 rounded w-full"
+            className="w-full p-3 rounded-xl border border-gray-400 bg-[var(--card-bg)] text-[var(--text-color)] placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           />
           <button
             type="submit"
-            className="bg-blue-600 text-white p-2 rounded w-full"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition"
           >
             Send OTP
           </button>
         </form>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-6">
           <input
             onChange={(e) => verifyOTP(e.target.value)}
             placeholder="Enter OTP"
-            className="border p-2 rounded w-full"
+            className="w-full p-3 rounded-xl border border-gray-400 bg-[var(--card-bg)] text-[var(--text-color)] placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
