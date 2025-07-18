@@ -21,7 +21,7 @@ export default function ChatInput({ inputText, setInputText, sendMessage }) {
   };
 
   return (
-    <div className="mt-6 flex gap-3 items-center">
+    <div className="mt-6 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
       <input
         type="text"
         placeholder="💬 Type your message..."
@@ -40,7 +40,7 @@ export default function ChatInput({ inputText, setInputText, sendMessage }) {
       />
       <label
         htmlFor="image-upload"
-        className="cursor-pointer bg-gray-700 p-2 rounded text-white hover:bg-gray-600 transition select-none"
+        className="cursor-pointer bg-gray-700 p-2 rounded text-white hover:bg-gray-600 transition select-none flex items-center justify-center"
         aria-label="Upload image"
       >
         📷

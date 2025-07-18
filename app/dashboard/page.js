@@ -75,7 +75,7 @@ export default function Dashboard() {
           onChange={(e) => setRawSearch(e.target.value)}
         />
 
-        <div className="flex gap-3 mb-8">
+        <div className="flex flex-col sm:flex-row gap-3 mb-8">
           <input
             type="text"
             placeholder="🆕 New chatroom title"
@@ -85,7 +85,7 @@ export default function Dashboard() {
           />
           <button
             onClick={createRoom}
-            className="bg-blue-600 hover:bg-blue-700 px-6 rounded-xl text-white font-semibold shadow-lg transition transform hover:scale-105"
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-xl text-white font-semibold shadow-lg transition transform hover:scale-105 w-full sm:w-auto mx-auto sm:mx-0"
             aria-label="Create chatroom"
           >
             Create
